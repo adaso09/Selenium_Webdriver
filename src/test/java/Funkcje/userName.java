@@ -1,46 +1,46 @@
 package Funkcje;
 
-import java.util.*;
-import java.nio.charset.*;
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.Arrays;
+
 
 class RandomString {
 
-    static String getAlphaNumericString(int n){
+    static String generateRandomEmail() {
+        int length = 10;
+        boolean useLetters = true;
+        boolean useNumbers = false;
+        String email = "@test.com";
+        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers) + email;
 
-        byte[] array = new byte[256];
-        new Random().nextBytes(array);
-
-        String randomString = new String(array, Charset.forName("UTF-8"));
-
-// tworzenie zmiennej
-        StringBuffer r = new StringBuffer();
-
-//tworzenie emaila
-        for (int k = 0; k < randomString.length(); k++) {
-
-            char ch = randomString.charAt(k);
-
-            if (((ch >= 'a' && ch <= 'z')
-                    || (ch >= 'A' && ch <= 'Z')
-                    || (ch >= '0' && ch <= '9'))
-                    && (n > 0)) {
-
-                r.append(ch);
-                n--;
-            }
-        }
-
-        return r.toString() + "@test.com";
-    }
-
-    public static void main(String[] args)
-    {
-// rozmiar tablicy
-        int n = 7;
-
-        System.out.println(getAlphaNumericString(n));
-
+        System.out.println(generatedString);
+        return generatedString;
     }
 }
 
+    class RandomPassword {
 
+        static String generateRandomPassword() {
+            int length = 10;
+            boolean useLetters = true;
+            boolean useNumbers = false;
+            String codes = "!";
+            String generatedString = RandomStringUtils.random(length, useLetters, useNumbers) + codes;
+
+            System.out.println(generatedString);
+            return generatedString;
+        }
+    }
+    class  SaveDates{
+
+    static  String [] copyEamil(){
+        Arrays.copyOf(new String[]{RandomString.generateRandomEmail()},0);
+        System.out.println(copyEamil());
+        return copyEamil();
+    }
+    static  String [] copyPassword(){
+        Arrays.copyOf(new String[]{RandomPassword.generateRandomPassword()},0);
+        return copyPassword();
+    }
+    }

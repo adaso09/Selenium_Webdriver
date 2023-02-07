@@ -23,7 +23,7 @@ public class Main02 {
         signInLink.click();
         WebElement emailInput = driver.findElement(By.className("account_input"));
         // Tworzenie randomowego @.
-        emailInput.sendKeys(RandomString.getAlphaNumericString(7));
+        emailInput.sendKeys(RandomString.generateRandomEmail());
         WebElement createAccountButton = driver.findElement(By.id("SubmitCreate"));
         createAccountButton.submit();
         // Brakuje tablicy do zapisywania tworzonego @ i hasla.
@@ -35,7 +35,7 @@ public class Main02 {
         firstNameInput.sendKeys("John");
         lastNameInput.sendKeys("Lennon");
         // Randomowe haslo - potrzeba tablicy
-        passwordInput.sendKeys(RandomPassword.getAlphaNumericString(10));
+        passwordInput.sendKeys(RandomPassword.generateRandomPassword());
         registerButton.isDisplayed();
         if(registerButton.isDisplayed()){  // sprawdzamy czy registerButton jest widoczny
             registerButton.click();
@@ -65,9 +65,10 @@ public class Main02 {
         firstName.sendKeys("Antek");
         lastName.clear();
         lastName.sendKeys("Smoczek");
-        //emialChnage.clear();
-        emialChnage.sendKeys((CharSequence) emailInput); // wywołanie element z tablicy - still process
-        passwordchnage.sendKeys("smoczek0");
+        emialChnage.clear();
+        emialChnage.sendKeys(RandomString.generateRandomEmail());
+        passwordchnage.click();
+        passwordchnage.sendKeys(SaveDates.copyPassword());
         passwordNew.sendKeys("smoczek0");
         passwordConfirm.sendKeys("smoczek0");
         subbmitKey.click();
