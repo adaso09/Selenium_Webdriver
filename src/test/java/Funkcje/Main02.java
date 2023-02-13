@@ -26,7 +26,6 @@ public class Main02 {
         emailInput.sendKeys(RandomString.generateRandomEmail());
         WebElement createAccountButton = driver.findElement(By.id("SubmitCreate"));
         createAccountButton.submit();
-        // Brakuje tablicy do zapisywania tworzonego @ i hasla.
         WebElement firstNameInput = driver.findElement(By.xpath("//input[@id='customer_firstname']"));
         WebElement lastNameInput = driver.findElement(By.xpath("//input[@id='customer_lastname']"));
         WebElement passwordInput = driver.findElement(By.xpath("//input[@id=\"passwd\"]"));
@@ -34,8 +33,9 @@ public class Main02 {
 
         firstNameInput.sendKeys("John");
         lastNameInput.sendKeys("Lennon");
-        // Randomowe haslo - potrzeba tablicy
+        // Randomowe haslo
         passwordInput.sendKeys(RandomPassword.generateRandomPassword());
+        WebElement passwordSave = passwordInput;
         registerButton.isDisplayed();
         if(registerButton.isDisplayed()){  // sprawdzamy czy registerButton jest widoczny
             registerButton.click();
@@ -67,8 +67,10 @@ public class Main02 {
         lastName.sendKeys("Smoczek");
         emialChnage.clear();
         emialChnage.sendKeys(RandomString.generateRandomEmail());
+        String emailSave = emialChnage.getText();
         passwordchnage.click();
-        passwordchnage.sendKeys(SaveDates.copyPassword());
+        String s = String.valueOf(passwordSave);
+        passwordchnage.sendKeys(passwordInput.getAttribute(s));
         passwordNew.sendKeys("smoczek0");
         passwordConfirm.sendKeys("smoczek0");
         subbmitKey.click();
@@ -76,23 +78,24 @@ public class Main02 {
         returnWeb.click();
 
         // Booking hotel
-       // WebElement hotelLocation = driver.findElement(By.id("hotel_location"));
-      //  WebElement selectHotel = driver.findElement(By.id("hotel_cat_name"));
-       // WebElement hotelParadis = driver.findElement(By.id("14"));
+        WebElement hotelLocation = driver.findElement(By.id("hotel_location"));
+       WebElement selectHotel = driver.findElement(By.id("hotel_cat_name"));
+       WebElement hotelParadis = driver.findElement(By.id("14"));
         WebElement chceckData = driver.findElement(By.id("check_in_time"));
         WebElement movePath = driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span"));
         WebElement selectDataIn = driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[1]/td[5]/a"));
         WebElement selectDataOut = driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[7]/a"));
         WebElement searchNow = driver.findElement(By.name("search_room_submit"));
 
-       // hotelLocation.sendKeys("Katowice");
-       // selectHotel.click();
-       // hotelParadis.click();
+        hotelLocation.sendKeys("Katowice");
+        selectHotel.click();
+        hotelParadis.click();
         chceckData.click();
         movePath.click();
         selectDataIn.click();
         selectDataOut.click();
         searchNow.click();
+
 
         WebElement sortByRating = driver.findElement(By.id("gst_rating"));
         sortByRating.click();
@@ -102,8 +105,8 @@ public class Main02 {
         sorted2.click();
 
         //testy
-//        WebElement backToAccont = driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/a"));
-//        backToAccont.click();
+        WebElement backToAccont = driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/a"));
+        backToAccont.click();
 //        WebElement myAdress = driver.findElement(By.xpath("//*[@id=\"center_column\"]/div/div/ul/li[4]/a/i"));
 //        myAdress.click();
 //        WebElement newAdress = driver.findElement(By.xpath("//*[@id=\"center_column\"]/div/a"));
