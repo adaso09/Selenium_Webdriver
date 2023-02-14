@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -37,6 +38,7 @@ public class MyStoreSteps {
     public void iLoginUsingEmailAndPassword(String email, String password) {
         SingInToMyStore singInToMyStore = new SingInToMyStore(driver);
         singInToMyStore.loginAsMain("liqyvtakwrueowhjhd@bbitj.com", "qwerty123@");
+        Assertions.assertEquals("Karol Muczek",singInToMyStore.getLoggedUsername());
     }
 
     @And("I go to my addresses page")
@@ -47,8 +49,12 @@ public class MyStoreSteps {
 
     @When("^I enter new address  alias (.+), address (.+), postal code (.+), City (.+), phone (.+), country$")
     public void iEnterNewAddressAliasAliasAddressAddressPostalCodePostalCodeCityCityPhonePhoneCountry(String alias, String address, String city, String postalCode, String phoneNumber) {
-        MyStoreShopAdresses adresses = new MyStoreShopAdresses(driver);
-        adresses.enterNewAddressData(alias,address,city,postalCode,phoneNumber);
+        MyStoreShopAdresses adre = new MyStoreShopAdresses(driver);
+        adre.enterNewAddressData(alias,address,city,postalCode,phoneNumber);
+
+        //do zrobinie assertions 
+
+
     }
     @Then("^Then the first one should contain (.+)$")
     public void thenTheFirstOneShouldContainAliasAddressPostalCodeCityPhone() {
@@ -56,6 +62,8 @@ public class MyStoreSteps {
 
     @Then("I can see new address")
     public void iCanSeeNewAddress() {
+        MyStoreShopAdresses masage = new MyStoreShopAdresses(driver);
+        Assertions.assertEquals("Address successfully added!",masage.getAddressName());
     }
 
 

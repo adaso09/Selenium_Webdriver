@@ -1,5 +1,6 @@
 package Zadania.Zadania_Warsztatowe_01;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,10 @@ public class MyStoreShopAdresses {
 
         @FindBy(name = "submitAddress")
         WebElement submitSaves;
+        @FindBy(className ="alert alert-success" )
+        WebElement message;
+        @FindBy(xpath = "//*[@id=\"address-31271\"]/div[2]/a[2]") // do zrobienia poprawny
+        WebElement removeAdress;
 
 
         public MyStoreShopAdresses(WebDriver driver) {
@@ -36,7 +41,12 @@ public class MyStoreShopAdresses {
         public void addFirstAdress(){
             adress.click();
         }
+            public boolean coutryInputGet(){
+            return countryInput.size() >0;
+
+        }
     public void enterNewAddressData(String alias, String address, String city, String postalCode, String phoneNumber){
+        WebElement country  = countryInput.get(0);
             aliasInput.click();
             aliasInput.clear();
             aliasInput.sendKeys(alias);
@@ -53,12 +63,24 @@ public class MyStoreShopAdresses {
             cityInput.clear();
             cityInput.sendKeys(city);
 
-            countryInput.get(1);
+
 
             phoneInput.click();
             phoneInput.clear();
             phoneInput.sendKeys(phoneNumber);
 
             submitSaves.click();
+    }
+    public  String getAddressDate(){
+        WebElement country  = countryInput.get(0);
+        String allians = country.findElement(By.name("alias")).getText();
+
+            return  getAddressDate();
+    }
+    public String getAddressName(){
+        return message.getText();
+    }
+    public  String getRemoveAdress(){
+                return null;
     }
     }
