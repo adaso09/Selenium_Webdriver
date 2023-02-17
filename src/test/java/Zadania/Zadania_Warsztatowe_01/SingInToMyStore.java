@@ -17,17 +17,14 @@ public class SingInToMyStore {
     @FindBy(id = "submit-login")
     private  WebElement signInButton;
 
-    @FindBy(xpath ="//a[@class='account']")
+    @FindBy(xpath = "//a[@class='account']")
     private WebElement userName;
-    @FindBy(className = "user-info")
-    private  WebElement singInBtn;
+
     public SingInToMyStore(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void  loginIn(){
-        singInBtn.click();
-    }
+
 
     public void loginAsMain(String email, String password) {
         loginInputElement.click();

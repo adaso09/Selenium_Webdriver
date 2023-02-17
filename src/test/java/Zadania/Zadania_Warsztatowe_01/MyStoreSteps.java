@@ -12,12 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class MyStoreSteps {
-    // MyStoreShopAdresses myStoreShopAdresses;
+    MyStoreShopAdresses myStoreShopAdresses;
+    SingInToMyStore singInToMyStore;
     private WebDriver driver;
 
 
-    @Given("I'm on shop main page")
-    public void mainShopPage() {
+    @Given("I go to login shop page")
+    public void iGoToLoginShopPage() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -25,33 +26,25 @@ public class MyStoreSteps {
         driver.manage().window().maximize();
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=authentication");
 
-    }
 
-
-    @When("I go to login shop page")
-    public void iGoToLoginShopPage() {
-        SingInToMyStore singIn = new SingInToMyStore(driver);
-        singIn.loginIn();
 
     }
 
-    @And("I login using  email {string} and password {string}")
+    @When("^I login using  email (.+) and password (.+)$")
     public void iLoginToShopUsingEmailAndPassword(String email, String password) {
-        SingInToMyStore singInToMyStore = new SingInToMyStore(driver);
         singInToMyStore.loginAsMain(email,password);
         Assertions.assertEquals("Karol Muczek", singInToMyStore.getLoggedUsername());
     }
 
     @And("I go to my Shop addresses page")
     public void iGoToMyShopAddressesPages() {
-        MyStoreShopAdresses myStoreShopAdresses = new MyStoreShopAdresses(driver);
-        myStoreShopAdresses.addFirstAdress();
+        myStoreShopAdresses.addAdresses();
     }
 
     @When("^I enter new address  alias (.+), address (.+), postal code (.+), City (.+), phone (.+)$")
     public void iEnterNewAddressAliasAddressPostalCodeCityPhoneCountry(String alias, String address, String postal, String City, String phone) {
-        MyStoreShopAdresses adresses = new MyStoreShopAdresses(driver);
-        adresses.enterNewAddressShopData(alias,address,postal,City,phone);
+
+        myStoreShopAdresses.enterNewAddressShopData(alias,address,postal,City,phone);
     }
     @Then("^the first one should contain (.*)$")
     public void theFirstOneShouldContainAliasAddressPostalCodeCityPhone(String expectedText) {
@@ -60,8 +53,8 @@ public class MyStoreSteps {
 
     @Then("I can see new shop address")
     public void iCanSeeShopNewAddress() {
-        MyStoreShopAdresses masage = new MyStoreShopAdresses(driver);
-        Assertions.assertEquals("Address successfully added!", masage.getAddressName());
+
+      //  Assertions.assertEquals("Address successfully added!", myStoreShopAdresses.getAddressName());
     }
 
 

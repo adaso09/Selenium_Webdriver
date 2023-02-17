@@ -9,10 +9,12 @@ import java.util.List;
 
 
 public class MyStoreShopAdresses {
-    private final WebDriver driver;
+    @FindBy (id ="addresses-link")
+    WebElement goToAdresses;
 
-    @FindBy(className = "material-icons")
-    WebElement adress;
+
+    @FindBy(css = "a.add-address")
+    WebElement createNewAddress;
     @FindBy(name = "alias")
     WebElement aliasInput;
     @FindBy(name = "address1")
@@ -35,17 +37,17 @@ public class MyStoreShopAdresses {
 
 
     public MyStoreShopAdresses(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void addFirstAdress(){
-        adress.click();
+    public  void addAdresses(){
+        goToAdresses.click();
+        createNewAddress.click();
     }
-    public boolean coutryInputGet(){
-        // check
-        return countryInput.size() >0;
-
-    }
+//    public boolean coutryInputGet(){
+//        // check
+//      //  return countryInput.size() >0;
+//
+//    }
     public void enterNewAddressShopData(String alias, String address, String city, String postalCode, String phoneNumber){
         WebElement country  = countryInput.get(0);
         aliasInput.click();
@@ -82,11 +84,11 @@ public class MyStoreShopAdresses {
 //    // do zrobinia
 //         return  null; //String.join("\n", alias, addressText, cityAndPostal, phone);
 
-    public String getAddressName(){
-        return message.getText();
-    }
-    public  String getRemoveAdress(){
-        // check
-        return null;
-    }
+//    public String getAddressName(){
+//        return message.getText();
+//    }
+//    public  String getRemoveAdress(){
+//        // check
+//        return null;
+//    }
 }
