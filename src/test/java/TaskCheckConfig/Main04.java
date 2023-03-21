@@ -58,7 +58,7 @@ public class Main04 {
             firstNameInput.sendKeys("John");
             lastNameInput.sendKeys("Lennon");
             email.clear();
-            email.sendKeys("jlen@test.com"); // trzeba stworzyć metodę która będzie tworzyć nowego maila z każdym uruchomieniem
+            email.sendKeys("jlen@test.com");
             passwordInput.sendKeys("mypassword");
             registerButton.click();
             driver.quit();
