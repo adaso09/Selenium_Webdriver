@@ -1,10 +1,9 @@
 # Portfolio 
 # About me
-![9673-gif--ralf-demolka](https://user-images.githubusercontent.com/121400753/226887697-dffaf2c6-aac1-4997-90e0-1edef8c6336a.gif) ![DASD](https://user-images.githubusercontent.com/121400753/226893468-1ca2e5ad-ca5c-4346-8786-4b72cc3110b8.gif) ![test](https://user-images.githubusercontent.com/121400753/226890543-ce217a27-3199-46b0-b9b2-42dd99c52506.gif)
-
 Hi, my name is Adam Nowak, I am a manual tester, here I would like to show you my projects and the knowledge I have. My goal is to develop testing knowledge and technical skills. In my spare time, I take part in tests on the uTest platform and learn about new tools to support tests. Learn on your own using Udemy's courses, tutorials, and webinars and marathons on IT, testing and development. I am also learning the basics of Java and JavaScript to expand my automated testing skills in the future.
 
 
+![9673-gif--ralf-demolka](https://user-images.githubusercontent.com/121400753/226887697-dffaf2c6-aac1-4997-90e0-1edef8c6336a.gif) 
 # Tools used in testing
 * Chrome Dev Tools
 
