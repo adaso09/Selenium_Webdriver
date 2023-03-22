@@ -13,8 +13,8 @@ Hi, my name is Adam Nowak, I am a manual tester, here I would like to show you m
 * Creating test case
 * Creating scenarios
 * Reporting bugs
-* Databases:PostgreSQL
-* Operating Systems:Windows, Linux
+* Databases: PostgreSQL
+* Operating Systems: Windows, Linux(basic)
 * Languages: Java (basic), Javascript (basic),SQL 
 * Testing: Postman, Selenium, WebdriverIO, SOAPUI, Gherkin Language
 * Version Control Systems: GIT
