@@ -5,17 +5,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
@@ -35,7 +35,7 @@ public class MyStoreOrderSteps {
     public void iLoginToUsingEmailAndPassword(String email, String password) {
         ShopCart shopCart = new ShopCart(driver);
         shopCart.loginAsUser(email, password);
-        Assertions.assertEquals("Jon Smith", shopCart.getLoggedUser());
+        Assertions.assertEquals("Jolo Können", shopCart.getLoggedUser());
     }
     @And("I'm on shop main page")
     public void iMOnShopMainPage() {
@@ -76,7 +76,7 @@ public class MyStoreOrderSteps {
         ShopCart shopCart = new ShopCart(driver);
         WebElement addressSubmit = driver.findElement(By.name("confirm-addresses"));
         addressSubmit.click();
-        WebElement prestaShopCarrier = driver.findElement(By.id("delivery_option_1"));
+        WebElement prestaShopCarrier = driver.findElement(By.id("delivery_option_2"));
         prestaShopCarrier.isSelected();
         WebElement taxConfirmed = driver.findElement(By.name("confirmDeliveryOption"));
         taxConfirmed.click();
@@ -98,11 +98,11 @@ public class MyStoreOrderSteps {
         shopCart.getPrice();
         WebElement confimredOredr = driver.findElement(By.id("content-hook_order_confirmation"));
         String expectedOredr = "\uE876YOUR ORDER IS CONFIRMED\n" +
-                "An email has been sent to the pastta@test.com address.";
+                "An email has been sent to the opera@test.com address.";
         Assertions.assertEquals(expectedOredr, confimredOredr.getText());
 
-     //  File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-     //   FileUtils.copyFile(screen,new File(".\\screenshot\\screen.png"));
+       File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screen,new File(".\\screenshot\\screen.png"));
     }
     @And("I check my Order history and check status of order")
     public void iCheckMyOrderHistoryAndCheckStatusOfOrder() {

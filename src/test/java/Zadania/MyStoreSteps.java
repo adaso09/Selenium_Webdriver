@@ -29,14 +29,12 @@ public class MyStoreSteps {
     public void iLoginToShopUsingEmailAndPassword(String email, String password) {
         SingInToMyStore singInToMyStore = new SingInToMyStore(driver);
         singInToMyStore.loginAsMain(email,password);
-        Assertions.assertEquals("Jon Owen", singInToMyStore.getLoggedUsername());
+        Assertions.assertEquals("Jarosław Kotek", singInToMyStore.getLoggedUsername());
         singInToMyStore.goToAdress();
     }
     @And("I go to my Shop addresses page")
     public void iGoToMyShopAddressesPages() {
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=addresses");
-        // WebElement address = driver.findElement(By.cssSelector("a[id='addresses-link']"));
-        //address.click();
         WebElement createNewAdress = driver.findElement(By.cssSelector("a[data-link-action ='add-address']"));
         createNewAdress.click();
     }

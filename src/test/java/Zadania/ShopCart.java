@@ -45,9 +45,10 @@ public class ShopCart {
 
     public void addQtyToCart() {
         WebElement size = driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[2]"));
+        
         new WebDriverWait(driver, Duration.ofSeconds(7)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("i[class='material-icons touchspin-up']")));
         if (size.isSelected()) {
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i < 6; i++) {
                 driver.findElement(By.cssSelector("i[class='material-icons touchspin-up']")).click();
             }
             // url rozmiar
@@ -67,7 +68,7 @@ public class ShopCart {
         }
     }
     public void getPrice() {
-        new WebDriverWait(driver, Duration.ofSeconds(7)).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("span[class='price']"),"€143.60"));
+        new WebDriverWait(driver, Duration.ofSeconds(7)).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("span[class='price']"),"$150.60"));
         WebElement price = driver.findElement(By.cssSelector("span[class='price']"));
         price.getText();
         System.out.println(price.getText());
@@ -80,9 +81,9 @@ public class ShopCart {
         detalis.click();
 
         WebElement orderStatus = driver.findElement(By.cssSelector("span[class='label label-pill bright']"));
-        WebElement orderPrice = driver.findElement(By.xpath("//*[@id=\"order-products\"]/tfoot/tr[3]/td[2]"));
+        WebElement orderPrice = driver.findElement(By.xpath("//*[@id=\"order-products\"]/tfoot/tr[4]/td[2]"));
 
-        String prices = "€143.60";
+        String prices = "€150.60";
         String statusAsText = "Awaiting check payment";
         Assertions.assertEquals(statusAsText, orderStatus.getText());
         Assertions.assertEquals(prices,orderPrice.getText());

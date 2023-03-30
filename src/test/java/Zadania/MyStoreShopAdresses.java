@@ -34,6 +34,8 @@ public class MyStoreShopAdresses {
     @FindBy(xpath = "//*[@id=\"field-id_country\"]/option[2]")
     private WebElement countryInput;
 
+    @FindBy(xpath = "//*[@id=\"field-id_state\"]/option[35]")
+    private  WebElement state;
     public MyStoreShopAdresses(WebDriver driver) {
         this.driver = driver;
 
@@ -54,6 +56,7 @@ public class MyStoreShopAdresses {
         phoneNumberInput.clear();
         phoneNumberInput.sendKeys(phone);
         countryInput.click();
+        state.click();
 
         submitBtn.click();
     }

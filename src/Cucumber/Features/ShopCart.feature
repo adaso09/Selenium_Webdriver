@@ -2,7 +2,7 @@ Feature: Login at MyStore and payment
   @cart
   Scenario: Logged user select product and added to cart
     Given I go to login shop
-    When  I login to using  email "pastta@test.com" and password "1234@"
+    When  I login to using  email "opera@test.com" and password "1234567"
     And I'm on shop main page
     And  I selected item "Hummingbird Printed Sweater" to cart
     And I select Size M and Quantity

@@ -1,7 +1,7 @@
 package Java;
 
 
-public class Main1 {
+public class Calcurator_Task {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         calculator.add(2,5);
